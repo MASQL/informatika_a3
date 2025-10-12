@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mahasiswa</title>
+    <link rel="stylesheet" href="asset/css/styledaftar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">masql<span class="logo-alt">server</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="daftar.html">Daftar </a></li>
+            <li><a href="#">Jadwal MK</a></li>
+            <li><a href="#">Bantuan</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h1>Data Mahasiswa Terdaftar</h1>
+        <p>Unggah file Excel (`database_server.xlsx`) untuk menampilkan data di bawah ini.</p>
+        
+        <div class="form-group">
+            <label for="excel-file">Pilih File Excel:</label>
+            <input type="file" id="excel-file" accept=".xlsx, .xls" class="file-input">
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <th>NIM</th>
+                    <th>Jurusan</th>
+                    <th>Jalur Masuk</th>
+                    <th>Tanggal Pendaftaran</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                </tbody>
+        </table>
+    </main>
+    
+    <script src="asset/js/scriptdaftar.js"></script>
+</body>
+</html>

@@ -21,29 +21,23 @@
     </nav>
 
     <main class="container">
-        <h1>Data Mahasiswa Terdaftar</h1>
-        <p>Unggah file Excel (`database_mahasiswa.xlsx`) untuk menampilkan data di bawah ini.</p>
-        
-        <div class="form-group">
-            <label for="excel-file">Pilih File Excel:</label>
-            <input type="file" id="excel-file" accept=".xlsx, .xls" class="file-input">
-        </div>
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Nama Lengkap</th>
-                    <th>NPM</th>
-                    <th>Alamat</th>
-                    <th>Jurusan</th>
-                    <th>Jalur Masuk</th>
-                    <th>Tanggal Pendaftaran</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                </tbody>
-        </table>
-    </main>
+    <h1>Data Mahasiswa Terdaftar</h1>
+    <p>Berikut adalah data mahasiswa yang tersimpan di dalam database secara real-time.</p>
+    
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>NPM</th>
+                <th>Alamat</th>
+                <th>Jurusan</th>
+                <th>Jalur Masuk</th>
+                <th>Tanggal Pendaftaran</th> </tr>
+        </thead>
+        <tbody id="table-body">
+            </tbody>
+    </table>
+</main>
     
     <script src="asset/js/scriptdaftar.js"></script>
 </body>

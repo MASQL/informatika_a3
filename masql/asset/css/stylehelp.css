@@ -1,4 +1,4 @@
-/* Import Font dari Google Fonts (Opsional, tapi membuat tampilan lebih baik) */
+/* Import Font dari Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 /* Reset dan Pengaturan Dasar */
@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff; /* Latar belakang putih bersih */
+    background-color: #ffffff;
     color: #333;
     line-height: 1.6;
 }
@@ -25,23 +25,18 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* --- CSS Logo Baru --- */
 /* --- CSS Logo Baru Tanpa Outline --- */
 .logo {
     font-size: 1.8rem;
     font-weight: 600;
-    /* Warna teks biru cyan gelap */
-    color: #00abab; 
-    /* Efek neon cyan */
+    color: #008B8B; 
     text-shadow: 
-        0 0 8px #13d8d8,
-        0 0 12px #20eaea;
+        0 0 8px #00ffff,
+        0 0 12px #00ffff;
 }
 
 .logo-alt {
-    /* Warna teks ungu gelap */
-    color: #7c00d4; 
-    /* Efek neon ungu cerah */
+    color: #4B0082; 
     text-shadow: 
         0 0 8px #9932CC,
         0 0 12px #9932CC;
@@ -78,7 +73,7 @@ body {
 }
 
 h1 {
-    color: #8e44ad; /* Ungu */
+    color: #8e44ad;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -122,7 +117,7 @@ select:focus {
     padding: 15px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(45deg, #00f7ff, #8e44ad); /* Gradasi Neon ke Ungu */
+    background: linear-gradient(45deg, #00f7ff, #8e44ad);
     color: white;
     font-size: 1.1rem;
     font-weight: 600;
@@ -137,7 +132,7 @@ select:focus {
 
 /* --- Gaya Popup --- */
 .popup {
-    display: none; /* Awalnya disembunyikan */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -185,4 +180,23 @@ select:focus {
 
 .close-btn:hover {
     color: #333;
+}
+/* ... (kode CSS Anda yang sudah ada) ... */
+
+/* Gaya tambahan untuk textarea di halaman bantuan */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical; /* Memungkinkan user mengubah tinggi textarea */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #8e44ad;
+    box-shadow: 0 0 5px rgba(142, 68, 173, 0.3);
 }

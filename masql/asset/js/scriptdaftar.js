@@ -1,46 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    const fileInput = document.getElementById('excel-file');
     const tableBody = document.getElementById('table-body');
 
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
+    // Fungsi untuk mengambil data dari server (ambil_data.php)
+    async function loadDataFromServer() {
+        try {
+            const response = await fetch('ambil_data.php');
+            if (!response.ok) {
+                throw new Error(`Gagal menghubungi server: ${response.status}`);
+            }
+            const data = await response.json();
+            displayDataInTable(data);
+        } catch (error) {
+            console.error("Terjadi kesalahan saat memuat data:", error);
+            tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Gagal memuat data. Periksa koneksi atau lihat console.</td></tr>`;
+        }
+    }
 
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const data = new Uint8Array(e.target.result);
-            const workbook = XLSX.read(data, { type: 'array' });
-            const firstSheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[firstSheetName];
-            const jsonData = XLSX.utils.sheet_to_json(worksheet);
-            displayDataInTable(jsonData);
-        };
-        reader.readAsArrayBuffer(file);
-    });
-
+    // Fungsi untuk menampilkan data yang diterima ke dalam tabel HTML
     function displayDataInTable(data) {
-        tableBody.innerHTML = '';
+        tableBody.innerHTML = ''; // Kosongkan tabel sebelum diisi
+
         if (data.length === 0) {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td colspan="6" style="text-align:center;">Tidak ada data untuk ditampilkan.</td>`;
-            tableBody.appendChild(row);
+            tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Belum ada data mahasiswa yang terdaftar.</td></tr>`;
             return;
         }
 
         data.forEach(mahasiswa => {
             const row = document.createElement('tr');
-            // FIX: Menyesuaikan dengan nama kolom dari file Excel baru
-            // dan menambahkan kolom Alamat
+            // Isi setiap sel dengan data dari database
+            // Pastikan nama properti (e.g., mahasiswa.nama_lengkap) sama persis dengan kolom di database
             row.innerHTML = `
-                <td>${mahasiswa['Nama Lengkap'] || ''}</td>
-                <td>${mahasiswa['NPM'] || ''}</td>
-                <td>${mahasiswa['Alamat'] || ''}</td>
-                <td>${mahasiswa['Jurusan'] || ''}</td>
-                <td>${mahasiswa['Jalur Masuk'] || ''}</td>
-                <td>${mahasiswa['Tanggal Dicatat'] || ''}</td>
+                <td>${mahasiswa.nama_lengkap}</td>
+                <td>${mahasiswa.npm}</td>
+                <td>${mahasiswa.alamat}</td>
+                <td>${mahasiswa.jurusan}</td>
+                <td>${mahasiswa.jalur_masuk}</td>
             `;
             tableBody.appendChild(row);
         });
     }
+
+    // Panggil fungsi untuk memuat data saat halaman selesai dimuat
+    loadDataFromServer();
 });
